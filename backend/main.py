@@ -1,5 +1,6 @@
 import os
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import json
 import pandas as pd
 import numpy as np
@@ -7,11 +8,10 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
 app = Flask(__name__)
+CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
 
-# Get the directory where the script is located
 base_dir = os.path.dirname(os.path.abspath(__file__))
 
-# Construct the full path to the intents.json file
 json_path = os.path.join(base_dir, "intents.json")
 
 # Load intents from JSON file
