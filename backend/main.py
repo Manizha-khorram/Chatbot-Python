@@ -24,7 +24,7 @@ responses = []
 
 for intent in intents_data['intents']:
     for pattern in intent['patterns']:
-        questions.append(pattern)
+        questions.append(pattern.lower())
         responses.append(intent['responses'][0])
 
 # Create DataFrame
